@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<?php include "head.html" ?>
+    
+<body>
+    <?php include "header.php" ?>
+
+
+<div id="home">
+    <div class="landing-text">
+        <h1>RUHE VARENS</h1>
+        <h3>De mooiste varens van Nederland.</h3>
+    </div>
+</div>
+    
+
+<div class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="img/Alocasia_Polly_Stek.jpg">
+            </div>
+            <div class="col-sm-6 text-center">
+                <h2>Het begint bij verspenen</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
+                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="padding">
+     <div class="container">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h2>Vervolgens groeien ze op...</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
+                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
+            </div>
+             <div class="col-sm-6">
+                <img src="img/Zaaibakken_2.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+<!--
+<script>
+    
+    var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+  
+  // Apply to all slideshows that you define with the markup wrote
+  slideshows.forEach(initSlideShow);
+
+  function initSlideShow(slideshow) {
+
+    var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Get an array of slides
+
+    var index = 0, time = 2000;
+    slides[index].classList.add('active');  
+    
+    setInterval( () => {
+      slides[index].classList.remove('active');
+      
+      //Go over each slide incrementing the index
+      index++;
+      
+      // If you go over all slides, restart the index to show the first slide and start again
+      if (index === slides.length) index = 0; 
+      
+      slides[index].classList.add('active');
+
+    }, time);
+  }</script>
+-->
+
+<div id="fixed">
+    
+</div>
+    
+<!-- Slideshow container -->
+<div class="padding">
+ <!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="img/Adiantum_Fragrans.jpg" style="width:100%">
+    <div class="text">Adiantum Fragnans</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="img/Nephrolepis.jpg" style="width:100%">
+    <div class="text">Nephrolepis</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="img/Zaaibakken.jpg" style="width:100%">
+    <div class="text">Zaaibakken</div>
+  </div>
+    
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 4</div>
+    <img src="img/Pteris_Evergemiensis.jpg" style="width:100%">
+    <div class="text">Pteris Evergemiensis</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+
+</div>
+</div>
+    
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+</script>
+
+<div class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="img/bootstrap2.png">
+            </div>
+            <div class="col-sm-6">
+                <h4>Hier nog meer algemene informatie</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo </p>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<?php include "footer.php"?>
+</body>
+</html>
