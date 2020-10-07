@@ -48,6 +48,8 @@ html,body {
     font-weight: 700;
 }
 
+
+
 .landing-text {
     display: table-cell;
     text-align: center;
@@ -81,6 +83,8 @@ footer{
     background-color: #23415C;
     padding: 5% 5% 5% 5%;
     color: #FFF;
+    position: relative;
+    bottom: 0;
 }
 
 .fa {
@@ -221,3 +225,6 @@ footer{
     height: 400px;  /* The height is 400 pixels */
     width: 100%;  /* The width is the width of the web page */
 }
+
+
+

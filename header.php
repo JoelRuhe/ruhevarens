@@ -15,7 +15,7 @@
                 <li><a href="about_us.php">Over ons</a></li>
                 <li><a href="plants.php">Planten</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="#">Log in</a></li>
+                <li><a href="login.php">Log in</a></li>
             </ul>
         </div>
     </div>
