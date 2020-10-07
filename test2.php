@@ -1,4 +1,7 @@
-<?php  
+<?php 
+
+include 'head.html';
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -11,68 +14,77 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-?>
-<div class="padding">
-<form method="get">
-<button id="edit_button" type="submit" name="edit_button" value="5"><i class="material-icons">&#xE254;</i></button>
-</form>
-    <div class="container justify-content-center">
-        <form method="post" class="form-horizontal">
-    
-<?php            
-    if(isset($_GET["edit_button"])) {
-        $id = $_GET["edit_button"];
-        $sql = "SELECT * FROM plants WHERE id = '$id'";
-        if($result = mysqli_query($conn, $sql)){
-            
-            while($row = mysqli_fetch_array($result)) {
-            $plant_species = $row['plant_species']; 
-}           
-        }
-        else{
-            echo 'else statement';
-        }
+if(isset($_GET["selectedPlant"])) {
+    echo'fuck';
+        $id = $_GET["selectedPlant"];
+         $sql = "SELECT * FROM plants WHERE id = '$id'";
+                if($result = mysqli_query($conn, $sql)){
+                    if(mysqli_num_rows($result) > 0){
+                        while($row = mysqli_fetch_array($result)){
+                            $plant_species = $row['plant_species'];
+                            $pot_size = $row['pot_size'];
+                            $description = $row['description'];
+                            $price = $row['price'];
+                            $image = $row['image'];
+                        }
+                    }
+                }
+        
     }
 
-    echo '<div class="form-group">
-      <label class="control-label col-sm-2">Plantsoort:</label>
-      <div class="col-sm-10">
-        <input type="name" class="form-control" id="plant_species_edit" value="'.$plant_species.'"  name="plant_species_edit" required="required">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2">Potgrootte:</label>
-      <div class="col-sm-10">          
-        <input type="name" class="form-control" id="pot_size_edit" name="pot_size_edit" required="required">
-      </div>
-    </div>
-    <div  class="form-group">
-      <label class="control-label col-sm-2">Omschrijving:</label>
-      <div class="col-sm-10">          
-        <textarea rows = "5" cols = "60" type="name" class="form-control" id="description_edit" name="description_edit"></textarea>
-      </div>
-    </div>
-    <div class="form-group">
-      <label  class="control-label col-sm-2">Prijs:</label>
-      <div class="col-sm-10">          
-        <input type="name" class="form-control" id="price_edit" name="price_edit" required="required">
-      </div>
-    </div>
-     <div class="form-group">
-      <label class="control-label col-sm-2">Afbeelding:</label>
-      <div class="col-sm-10">          
-        <input type="file" name="image_edit" class="form-control-file" id="image_edit">            
+
+?>
+<div class="padding">
+    <div class="wrapper">
+        <div style="margin-top: 100px;" class="sidebar">
+            <h2 style="color: #FFF;">Planten</h2>
+            <input style="align:center;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Zoek plant..">
+            
+            <?php
+                $sql = "SELECT * FROM plants";
+                if($result = mysqli_query($conn, $sql)){
+                    if(mysqli_num_rows($result) > 0){
+                        while($row = mysqli_fetch_array($result)){
+                            $id = $row['id'];
+                            echo $id;
+                            echo '<form action="#collapseContainer" method="GET"><ul id="myUL">
+                                    <li><button data-toggle="collapse" type="submit" href="#collapseContainer" value="'.$id.'" name="selectedPlant" role="button" aria-expanded="false" aria-controls="collapseContainer">'. $row['plant_species'].'</button></li></ul></form>';    
+                        }
+                    }
+                }
+    
+            ?>
+            
+            <script>
+                function myFunction() {
+                  // Declare variables
+                  var input, filter, ul, li, a, i, txtValue;
+                  input = document.getElementById('myInput');
+                  filter = input.value.toUpperCase();
+                  ul = document.getElementById("myUL");
+                  li = ul.getElementsByTagName('li');
+
+                  // Loop through all list items, and hide those who don't match the search query
+                  for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      li[i].style.display = "";
+                    } else {
+                      li[i].style.display = "none";
+                    }
+                  }
+                }
+            </script>
         </div>
     </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" name="editPlantSubmit">Bewerk plant</button>
-      </div>
-    </div>';
+</div>  
 
+<div class="collapse" id="collapseContainer">
 
-    ?>
-          </form> 
-    </div>
+  <div class="card card-body">
+      
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
 </div>
-
+    
