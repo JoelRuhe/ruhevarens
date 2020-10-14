@@ -42,8 +42,9 @@
 
         $myusername = $_POST['username'];
         $mypassword = $_POST['password'];
+        $mypassword_hashed = hash('sha512',$mypassword);
 
-        $sql = "SELECT id FROM admin WHERE user = '$myusername' and pass = '$mypassword'";
+        $sql = "SELECT id FROM admin WHERE user = '$myusername' and pass = '$mypassword_hashed'";
         $result = $conn->query($sql);
 
         if ($result->num_rows == 1) {

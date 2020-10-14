@@ -15,23 +15,33 @@ if ($conn->connect_error) {
 }
 
 if(isset($_GET["selectedPlant"])) {
-    echo'fuck';
         $id = $_GET["selectedPlant"];
          $sql = "SELECT * FROM plants WHERE id = '$id'";
-                if($result = mysqli_query($conn, $sql)){
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_array($result)){
-                            $plant_species = $row['plant_species'];
-                            $pot_size = $row['pot_size'];
-                            $description = $row['description'];
-                            $price = $row['price'];
-                            $image = $row['image'];
-                        }
-                    }
-                }
+           $sth = $conn->query($sql);
+            $result=mysqli_fetch_array($sth);
+    
+            $description = $result['description']; 
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
+
+    
+    
+    ?>
+<div class="container" style="width:500px; height: 500px; background-color:black;">
+    
+    <p style="color:white"><?php echo $description ?></p>
+    
+    <?php    
+//        echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
+//        header("Content-Type: image/jpeg");
+        echo $image;
+ ?>
+
+</div>
+    
+    <?php
+    
         
     }
-
 
 ?>
 <div class="padding">
@@ -47,8 +57,8 @@ if(isset($_GET["selectedPlant"])) {
                         while($row = mysqli_fetch_array($result)){
                             $id = $row['id'];
                             echo $id;
-                            echo '<form action="#collapseContainer" method="GET"><ul id="myUL">
-                                    <li><button data-toggle="collapse" type="submit" href="#collapseContainer" value="'.$id.'" name="selectedPlant" role="button" aria-expanded="false" aria-controls="collapseContainer">'. $row['plant_species'].'</button></li></ul></form>';    
+                            echo '<form method="GET"><ul id="myUL">
+                                    <li><button type="submit" value="'.$id.'" name="selectedPlant">'. $row['plant_species'].'</button></li></ul></form>';    
                         }
                     }
                 }

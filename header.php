@@ -10,12 +10,12 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
-            <ul class="nav navbar-nav navbar-right">
+            <ul style="margin-right:50px;;" class="nav navbar-nav navbar-right">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">Over ons</a></li>
                 <li><a href="plants.php">Planten</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">Log in</a></li>
+<!--                <li><a href="login.php">Log in</a></li>-->
             </ul>
         </div>
     </div>

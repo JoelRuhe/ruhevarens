@@ -1,14 +1,13 @@
 <?php 
 session_start();
 
-include "head.html";
-
 
 
 if(!isset($_SESSION['id'])) {
  echo 'No active session';   
 }
 else{
+include "head.html";
 include "header.php"; 
 
 $servername = "localhost";
@@ -22,27 +21,21 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+    
 
-
-
-//ADD PLANT
-$plant_species = $_POST['plant_species'];
-$pot_size = $_POST['pot_size'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-$image = $_POST['image'];
-
-if(isset($_POST["addPlantSubmit"])) {
-   
-    $sql = "INSERT INTO plants (plant_species, pot_size, description, price, image) VALUES ('$plant_species', '$pot_size', '$description', '$price', '$image')";
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    echo "<script>window.location='admin.php'</script>";
-}
-
+////ADD IMAGE
+//    
+//if(isset($_GET["addImage"])){
+//    echo'HALLO';
+//    $id = $_GET["addImage"];
+//    $sql = "SELECT * FROM plants WHERE id='$id''";
+//    if($result = mysqli_query($conn, $sql)){
+//        if(mysqli_num_rows($result) > 0){
+//            $image_path = $row['image_path'];
+//        }
+//    }
+//}
+    
 //REMOVE PLANT
 if(isset($_GET["del_button"])) {
     $id = $_GET["del_button"];
@@ -55,46 +48,9 @@ if(isset($_GET["del_button"])) {
     echo "<script>window.location='admin.php#myTable'</script>";
 }
     
-//UPDATE PLANT
-$id_edit = $_POST['id_edit'];
-$plant_species_edit = $_POST['plant_species_edit'];
-$pot_size_edit = $_POST['pot_size_edit'];
-$description_edit = $_POST['description_edit'];
-$price_edit = $_POST['price_edit'];
-$image_edit = $_POST['image_edit'];
-    
-if(isset($_POST["editPlantSubmit"])) {
-    $sql = "UPDATE plants SET ";
-    
-    if(!empty($plant_species_edit)) {
-    $sql .= "plant_species= '$plant_species_edit',";
-    }
-    if(!empty($pot_size_edit)) {
-        $sql .= "pot_size= '$pot_size_edit',";
-    }
-    if(!empty($description_edit)) {
-        $sql .= "description= '$description_edit',";
-    }
-    if(!empty($price_edit)) {
-        $sql .= "price= '$price_edit',";
-    }
-     
-    if(!empty($image_edit)) {
-        $sql .= "image= '$image_edit',";
-    }
 
-    // strip off any extra commas on the end
-    $sql = rtrim($sql, ',');
 
-    $sql .= "WHERE id='$id_edit'";
-    
-    if ($conn->query($sql) === TRUE) {
-//        echo "Record removed successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    echo "<script>window.location='admin.php#myTable'</script>";
-}
+
 
 ?>
 <body>
@@ -108,7 +64,7 @@ if(isset($_POST["editPlantSubmit"])) {
     
 <div class="padding">
     <div class="container justify-content-center">
-        <form method="post" class="form-horizontal">
+        <form action="upload.php" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group">
               <label class="control-label col-sm-2">Plantsoort:*</label>
               <div class="col-sm-10">
@@ -134,14 +90,20 @@ if(isset($_POST["editPlantSubmit"])) {
               </div>
             </div>
              <div class="form-group">
+              <label  class="control-label col-sm-2">Actief*</label>
+              <div class="col-sm-10">          
+                <input type="checkbox" class="form-control" id="checkbox" name="checkbox">
+              </div>
+            </div>
+             <div class="form-group">
               <label class="control-label col-sm-2">Afbeelding:</label>
               <div class="col-sm-10">          
-                <input type="file" name="image" class="form-control-file" id="image">            
+                <input type="file" name="fileToUpload" class="form-control-file" id="fileToUpload">            
                 </div>
             </div>
             <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-10">
-                <button style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" name="addPlantSubmit">Voeg plant toe</button>
+                <input style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" value="Voeg plant toe">
               </div>
             </div>
           </form> 
@@ -192,6 +154,7 @@ function myFunction() {
                             echo "<th>Plantsoort</th>";
                             echo "<th>Potgrootte</th>";
                             echo "<th>Prijs</th>";
+                            echo "<th>Actief</th>";
                             echo "<th>Acties</th>";
                         echo "</tr>";
                     while($row = mysqli_fetch_array($result)){
@@ -199,13 +162,19 @@ function myFunction() {
                             echo "<td>" . $row['plant_species'] . "</td>";
                             echo "<td>" . $row['pot_size'] . "</td>";
                             echo "<td>" . $row['price'] . "</td>";
+                            if ($row['active'] == '1'){
+                                echo "<td> <input type='checkbox' checked onclick='return false;' /> </td>";
+                            } 
+                            if ($row['active'] == '0'){
+                                echo "<td> <input type='checkbox' onclick='return false;' /> </td>";
+                            } 
+                            
                             echo '<td><form method="get">
                             
                             <button style="border: none; background: none;" type="submit" id="edit_button" name="edit_button" value="'.$row['id'].'"><i class="material-icons">&#xE254;</i></button>
 
-                             <button style="border: none; background: none;" type="submit" name="del_button" value="'.$row['id'].'"><i class="material-icons">&#xE872;</i></button>
-                             
-                            
+                            <button style="border: none; background: none;" type="submit" name="del_button" value="'.$row['id'].'"><i class="material-icons">&#xE872;</i></button>
+                                                    
                              </form></td>';
                         echo "</tr>";
                     }
@@ -216,7 +185,6 @@ function myFunction() {
                     echo "No records matching your query were found.";
                 }
             }
-        }
     ?>
 
     </div>
@@ -224,7 +192,7 @@ function myFunction() {
     
 <div class="padding">
     <div class="container justify-content-center">
-        <form method="post" class="form-horizontal">
+        <form action="uploadEdit.php" method="post" class="form-horizontal" enctype="multipart/form-data">
 <?php            
     if(isset($_GET["edit_button"])) {
         $id = $_GET["edit_button"];
@@ -232,24 +200,27 @@ function myFunction() {
         if($result = mysqli_query($conn, $sql)){
             
             while($row = mysqli_fetch_array($result)) {
+                
+                
             $plant_species_edit = $row['plant_species']; 
             $pot_size_edit = $row['pot_size']; 
             $description_edit = $row['description']; 
             $price_edit = $row['price']; 
-            $image_edit = $row['image']; 
+            $active_edit = $row['active']; 
+            $image_path_edit = $row['image_path']; 
 
             }
 
             echo "<script>window.location.hash='plant_species_edit'</script>";
 
         }
-        else{
-            echo 'else statement';
-        }
     }
 
     echo 
     '
+    <input type="hidden" name="old_plant_species_edit" value="'.$plant_species_edit.'"/>
+    <input type="hidden" name="old_pot_size_edit" value="'.$pot_size_edit.'"/>
+    
     <div class="form-group">
       <label class="control-label col-sm-2">ID:</label>
       <div class="col-sm-10">
@@ -281,14 +252,25 @@ function myFunction() {
       </div>
     </div>
      <div class="form-group">
+      <label  class="control-label col-sm-2">Actief:</label>
+      <div class="col-sm-10">';
+        if($active_edit == '1'){
+        echo '<input type="checkbox" class="form-control" id="checkbox_edit" name="checkbox_edit" checked>';
+        }
+        if($active_edit == '0'){
+        echo '<input type="checkbox" class="form-control" id="checkbox_edit" name="checkbox_edit">';
+        }
+    echo '</div>
+    </div>
+     <div class="form-group">
       <label class="control-label col-sm-2">Afbeelding:</label>
       <div class="col-sm-10">          
-        <input type="file" name="image_edit" class="form-control-file" value="'.$image_edit.'" id="image_edit">            
+        <input type="file" name="fileToUpload_edit" class="form-control-file" value="'.$image_edit.'" id="fileToUpload_edit">            
         </div>
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" name="editPlantSubmit">Bewerk plant</button>
+        <input style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" value="Bewerk plant">
       </div>
     </div>';
 
@@ -302,7 +284,8 @@ function myFunction() {
 <?php 
 include 'footer.php';
 //$conn->close();
-    
+
+}
 ?>
     
   
