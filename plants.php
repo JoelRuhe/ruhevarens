@@ -94,7 +94,7 @@ if ($conn->connect_error) {
                     }
         ?>
     
-    <div class="padding">
+    <div style="margin-bottom:100px; margin-top:20px;"class="padding">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -122,7 +122,7 @@ if ($conn->connect_error) {
     <div class="padding">
         <div class="container">
 
-            <div style="margin-top:150px; margin-bottom:200px;">
+            <div style="margin-top:10%; margin-bottom:15%;">
                 <h2 style="text-align:center">Sorry!</h2>
                 <p style="text-align:center">Geen zoekresultaten gevonden.</p>
             </div>
