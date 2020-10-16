@@ -68,7 +68,7 @@ if ($conn->connect_error) {
     ?>
         <div class="padding">
             <div class="container">
-                <div style="margin-top:10%; margin-bottom:15%;">
+                <div style="margin-top:5%; margin-bottom:10%;">
                     <h1 style="text-align:center">Zoek of selecteer een plant.</h1>
                     <img src="img/fern.png" s style="display:block; margin-left: auto; margin-right: auto; margin-top: 30px; height: 150px; width: 150px;">
                 </div>
