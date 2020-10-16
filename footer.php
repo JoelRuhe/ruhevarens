@@ -1,4 +1,4 @@
-<footer class="container-fluid text-center">
+<footer style="position: static; bottom: 0;" class="container-fluid text-center">
     <div class="row">
         <div class="col-sm-6">
             <h3>Contact</h3>
@@ -23,4 +23,5 @@
             <img style="width: 150px; heigth: 150px;" src="img/transparent.png">
         </div>
     </div>
+       
 </footer>

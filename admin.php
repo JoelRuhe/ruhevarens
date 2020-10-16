@@ -74,7 +74,7 @@ if(isset($_GET["del_button"])) {
             <div class="form-group">
               <label class="control-label col-sm-2">Potgrootte:*</label>
               <div class="col-sm-10">          
-                <input type="name" class="form-control" id="pot_size" name="pot_size" required="required">
+                <input type="number" class="form-control" id="pot_size" name="pot_size" required="required">
               </div>
             </div>
            <div  class="form-group">
@@ -236,7 +236,7 @@ function myFunction() {
     <div class="form-group">
       <label class="control-label col-sm-2">Potgrootte:</label>
       <div class="col-sm-10">          
-        <input type="name" class="form-control" id="pot_size_edit" name="pot_size_edit" value="'.$pot_size_edit.'" required="required">
+        <input type="number" class="form-control" id="pot_size_edit" name="pot_size_edit" value="'.$pot_size_edit.'" required="required">
       </div>
     </div>
     <div  class="form-group">

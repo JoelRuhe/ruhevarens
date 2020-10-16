@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,16 +6,16 @@
     text-decoration: none;
 }
 
-body{
+body {
     background: #FFF;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     position: relative;
 }
 
-.wrapper .sidebar{
+.wrapper .sidebar {
     position: fixed;
     width: 300px;
     height: 100%;
@@ -23,49 +23,36 @@ body{
     padding: 30px;
 }
 
-.wrapper .sidebar h2{
+.wrapper .sidebar h2 {
     color: #FFF;
-/*    text-transform: uppercase;*/
+    /*    text-transform: uppercase;*/
     text-align: center;
     margin-bottom: 30px;
 }
 
-.wrapper .sidebar ul li{
+.wrapper .sidebar ul li {
     padding: 15px;
-    border-bottom: 1px dolid rgba(0,0,0,0.05);
-    border-top: 1px dolid rgba(255,255,255,0.05);
+    border-bottom: 1px dolid rgba(0, 0, 0, 0.05);
+    border-top: 1px dolid rgba(255, 255, 255, 0.05);
 }
 
-.wrapper .sidebar ul li a{
+.wrapper .sidebar ul li a {
     color: #FFF;
     display: block;
 }
 
-.wrapper .sidebar ul li{
+.wrapper .sidebar ul li {
     font-size: 20px;
     display: block;
     color: #FFF;
 }
 
-.wrapper .sidebar ul li:hover{
+.wrapper .sidebar ul li:hover {
     background: #696969;
 }
 
-.wrapper .sidebar ul li:hover a{
+.wrapper .sidebar ul li:hover a {
     color: #FFF;
 }
-
-
-#myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
-
 
 
