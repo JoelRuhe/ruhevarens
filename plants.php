@@ -1,8 +1,5 @@
 <html>
 
-<head>
-
-</head>
 
 <body>
     <?php 

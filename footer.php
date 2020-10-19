@@ -3,10 +3,10 @@
         <div class="col-sm-6">
             <h3>Contact</h3>
             <br>
-            <h4>Adres 1: Legmeerdijk 141 1432KA Aalsmeer</h4>
-            <h4>Adres 2: Meerlandenweg 7 1187ZR Amstelveen </h4>
-            <h4>E-mail: info@ruheplants.nl</h4>
-            <h4>Telefoon: 020-1347125</h4>
+            <h5>Adres 1: Legmeerdijk 141 1432KA Aalsmeer</h5>
+            <h5>Adres 2: Meerlandenweg 7 1187ZR Amstelveen </h5>
+            <h5>E-mail: info@ruheplants.nl</h5>
+            <h5>Telefoon: 020-1347125</h5>
         </div>
 <!--
         <div class="col-sm-4">
@@ -20,7 +20,7 @@
         </div>
 -->
         <div class="col-sm-6">
-            <img style="width: 150px; heigth: 150px;" src="img/transparent.png">
+            <img style="width: 200px; heigth: 200px;" src="img/transparent.png">
         </div>
     </div>
        
