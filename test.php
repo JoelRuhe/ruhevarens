@@ -26,14 +26,7 @@
             var value = $(this).val().toLowerCase();
             $('div[data-role="plant_species"]').filter(function() {
                 if($(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)){
-                    
                 }  
-//                if($(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) < -1)){
-//                alert('FUCK');
-//                }
-                    
-                
-                
             });
         });
     });
@@ -41,10 +34,10 @@
 </script>
 
 <body>
-    <div style="margin-left:15%; margin-right:15%; margin-top:10%;">
+    <div style="margin-left:15%; margin-right:15%; margin-top:10%; margin-bottom:5%;">
         <?php
         $i = 0; # start a loop counter at 1 
-            $sql = "SELECT * FROM plants";
+            $sql = "SELECT * FROM plants GROUP BY plant_species, id ORDER BY plant_species";
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                      echo '<input name="searchbox" id="searchbox" placeholder="Zoek plant..." list="encodings" type="text" class="filterinput form-control">';
@@ -58,9 +51,12 @@
             <form method="POST" action="plantinfo.php">
                 <div class="card" data-role="plant_species">
                     <div class="card-body">
-                        <img src="<?php echo $row["image_path"]; ?>">
+                        <img style="width: 100%; height: auto; object-fit: cover;" src="<?php echo $row["image_path"]; ?>">
                         <h5 style="margin-top:20px;" class="card-title"><?php echo $row["plant_species"]; ?></h5>
                         <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text"><?php echo $row["description"]; ?></p>
+                        <p style="font-size:13px;">Potgrootte: <?php echo $row['pot_size']; ?></p>
+                        <p style="font-size:13px;">Prijs: €<?php echo $row['price']; ?>0,-</p>
+
                         <button value="<?php echo $row["id"]; ?>" name="selectedplant" type="submit" class="btn btn-primary">Bekijk plant</button>
                     </div>
                 </div>

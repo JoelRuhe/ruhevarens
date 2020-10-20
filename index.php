@@ -8,20 +8,21 @@
 
 <div id="home">
     <div class="landing-text">
-        <h1>RUHE VARENS</h1>
-        <h3>De mooiste varens van Nederland.</h3>
+        <h4>Welkom bij</h4>
+        <h1>RUHE PLANTS</h1>
+        <h4>Leuk dat je onze site bezoekt! Dan ben jij vast geïnteresseerd in onze planten…</h4>
     </div>
 </div>
     
 
-<div class="padding">
+<div style="margin-top:2%;" class="padding">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <img src="img/Alocasia_Polly_Stek.jpg">
             </div>
-            <div class="col-sm-6 text-center">
-                <h2>Het begint bij verspenen</h2>
+            <div class="col-sm-6 text-center my-auto">
+                <h3>Het begint bij verspenen</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
             </div>
@@ -32,8 +33,8 @@
 <div class="padding">
      <div class="container">
         <div class="row">
-            <div class="col-sm-6 text-center">
-                <h2>Vervolgens groeien ze op...</h2>
+            <div class="col-sm-6 text-center my-auto">
+                <h3>Vervolgens groeien ze op...</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
             </div>
@@ -161,7 +162,7 @@ function showSlides(n) {
 <div class="padding">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 my-auto">
                 <img src="img/bootstrap2.png">
             </div>
             <div class="col-sm-6">

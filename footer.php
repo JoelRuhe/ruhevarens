@@ -20,7 +20,7 @@
         </div>
 -->
         <div class="col-sm-6">
-            <img style="width: 200px; heigth: 200px;" src="img/transparent.png">
+            <img style="width: 200px; heigth: 200px;" src="img/logo_sharp_transparent.png">
         </div>
     </div>
        

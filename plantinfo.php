@@ -25,6 +25,7 @@
         if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_array($result)){
                 $plant_species = $row['plant_species'];
+                $pot_size = $row['pot_size'];
                 $description = $row['description'];
                 $price = $row['price'];
                 $image_path = $row['image_path'];
@@ -32,15 +33,15 @@
         }
     }
     
-    $potgrootte_sql = "SELECT plant_species, GROUP_CONCAT(pot_size) FROM plants WHERE plant_species = '$plant_species'";
-    
-    if($result2 = mysqli_query($conn, $potgrootte_sql)){
-        if(mysqli_num_rows($result2) > 0){
-            while($row2 = mysqli_fetch_array($result2)){
-                $pot_size = $row2['GROUP_CONCAT(pot_size)'];
-            }
-        }
-    }
+//    $potgrootte_sql = "SELECT plant_species, GROUP_CONCAT(pot_size) FROM plants WHERE plant_species = '$plant_species'";
+//    
+//    if($result2 = mysqli_query($conn, $potgrootte_sql)){
+//        if(mysqli_num_rows($result2) > 0){
+//            while($row2 = mysqli_fetch_array($result2)){
+//                $pot_size = $row2['GROUP_CONCAT(pot_size)'];
+//            }
+//        }
+//    }
 
 ?>
 
@@ -62,7 +63,7 @@
             <div class="col-sm-6">
                 <div style="margin-left:100px;">
                     <?php
-                        echo '<h2>Omschrijving</h2>
+                        echo '<h4>Omschrijving</h4>
                         <p style="margin-top:10px; font-size:18px;">'.$description.'</p>
                         <p style="margin-top:30px; font-size:18px;">Potgrootte: '.$pot_size.'</p>
                         <p style="margin-top:10px; font-size:18px;">Prijs: €'.$price.'0,-</p>';

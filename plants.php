@@ -1,137 +1,88 @@
 <html>
 
+<head>
+
+</head>
+<?php
+    include 'head.html';
+    include 'header.php';
+    
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "ruhevarens";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    ?>
+
+<script>
+    $(document).ready(function() {
+        $("#searchbox").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $('div[data-role="plant_species"]').filter(function() {
+                if($(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)){
+                }  
+//                if($(this).toggle($(this).find('h6').text().toLowerCase().indexOf(value) > -1)){
+//                } 
+//                if($(this).toggle($(this).find('h4').text().toLowerCase().indexOf(value) > -1)){
+//                } 
+            });
+        });
+    });
+
+</script>
 
 <body>
-    <?php 
-
-include 'head.html';
-include 'header.php';
-    
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "ruhevarens";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-?>
-
-
-    <div style="margin-top:200px;" class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <form method="GET" role="search">
-                    <div class="input-group">
-                        <?php
-                            $sql = "SELECT * FROM plants";
-                            if($result = mysqli_query($conn, $sql)){
-                                if(mysqli_num_rows($result) > 0){
-                                echo '<input name="selectedPlant" placeholder="Kies of zoek uw plant..." list="encodings" type="text" class="form-control">
-                                <datalist id="encodings">';
-
-                                    while($row = mysqli_fetch_array($result)){
-                                        echo $row['id'];
-                                        echo 'input type="text" name="selectedPlantID" value="'.$row['id'].'">';
-                                        echo '<option name="selectedPlant" value="'.$row['plant_species'].' '.$row['pot_size'].'">Potgrootte: '.$row['pot_size'].'</option>';
-                                }
-
-                             mysqli_free_result($result);
-                            } else{
-                                echo "No records matching your query were found.";
-                            }
-                        }
-
-                       echo '</datalist>
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-search btn-info">
-                                <span class="glyphicon glyphicon-search"></span>
-                                <span class="label-icon">Search</span>
-                            </button>
-                        </div>';?>
-                    </div>
-                </form>
-
-            </div>
-        </div>
+    <div class="landing-text-aboutus">
+    <h1>ONZE PLANTEN</h1>
     </div>
-
-
-    <?php
-    if(!isset($_GET["selectedPlant"])){
-    ?>
-        <div class="padding">
-            <div class="container">
-                <div style="margin-top:5%; margin-bottom:10%;">
-                    <h1 style="text-align:center">Zoek of selecteer een plant.</h1>
-                    <img src="img/fern.png" s style="display:block; margin-left: auto; margin-right: auto; margin-top: 30px; height: 150px; width: 150px;">
-                </div>
-            </div>
-        </div>
+    <div style="margin-left:15%; margin-right:15%; margin-top:5%; margin-bottom:5%;">
         <?php
-        }
-
-    if(isset($_GET["selectedPlant"])) {
-            $selected_plant = $_GET["selectedPlant"];
-            list($plant_species_listitem, $pot_size_listitem) = explode(" ", $selected_plant);
-
-            $sql = "SELECT * FROM plants WHERE plant_species = '$plant_species_listitem' and pot_size = '$pot_size_listitem'";
+        $i = 0; # start a loop counter at 1 
+            $sql = "SELECT * FROM plants GROUP BY plant_species, id ORDER BY plant_species";
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
+                     echo '<input name="searchbox" id="searchbox" placeholder="Zoek plant..." list="encodings" type="text" class="filterinput form-control">';
+                    echo '<div class="row">';
                     while($row = mysqli_fetch_array($result)){
-                        $id = $row['id'];
-                        $plant_species = $row['plant_species'];
-                        $pot_size = $row['pot_size'];
-                        $description = $row['description'];
-                        $price = $row['price'];
-                        $image_path = $row['image_path'];
-                    }
+            
+                    if ($i!=0 && $i%4==0) echo '</div><div class="row">';
         ?>
-    
-    <div style="margin-bottom:100px; margin-top:20px;"class="padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <?php echo '<img style="display:block; margin-left: auto; margin-right: auto; height:400px; width:400px;" src="'.$image_path.'">';?>
-                </div>
-                <div class="col-sm-6">
-                    <div style="margin-left:100px;">
-                        <?php
-                        echo '<h2>'.$plant_species.'</h2>
-                        <p style="margin-top:10px; font-size:18px;">'.$description.'</p>
-                        <p style="margin-top:30px; font-size:18px;">Potgrootte: '.$pot_size.'</p>
-                        <p style="margin-top:10px; font-size:18px;">Prijs: €'.$price.'0,-</p>';
-                        ?>
+
+        <div style="margin-top:5%;" class="col-sm-3" d-flex justify-content-center data-role="plant_species">
+            <form method="POST" action="plantinfo.php">
+                <div class="card">
+                    <div class="card-body">
+                        <img style="width: 100%; height: auto; object-fit: cover;" src="<?php echo $row["image_path"]; ?>">
+                        <h5 style="margin-top:20px;" class="card-title"><?php echo $row["plant_species"]; ?></h5>
+                        <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text"><?php echo $row["description"]; ?></p>
+                        <h5 style="font-size:13px;">Potgrootte: <?php echo '<span font-size:13px;">' .$row['pot_size']. '</span>'; ?></h5>
+                        <h5 style="margin-bottom:10%;font-size:13px;">Prijs: €<?php echo $row['price']; ?>0,-</h5>
+
+                        <button value="<?php echo $row["id"]; ?>" name="selectedplant" type="submit" class="btn btn-primary">Bekijk plant</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </div>
 
+        <?php
 
-    <?php
-        }
-        else{
-    ?>
-    <div class="padding">
-        <div class="container">
-
-            <div style="margin-top:10%; margin-bottom:15%;">
-                <h2 style="text-align:center">Sorry!</h2>
-                <p style="text-align:center">Geen zoekresultaten gevonden.</p>
-            </div>
-
-        </div>
-    </div>
-    <?php
+            $i++;
+            }
+            echo '</div>';
         }
     }
-}
+        ?>
 
-include 'footer.php';
+    </div>
+
+<?php>
+  include 'footer.php';  
 ?>
 </body>
 
