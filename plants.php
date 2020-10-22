@@ -1,7 +1,12 @@
 <html>
 
 <head>
+    <style>
+        .child {
+            width: 100%;
+        }
 
+    </style>
 </head>
 <?php
     include 'head.html';
@@ -25,17 +30,24 @@
         $("#searchbox").on("keyup", function() {
             var value = $(this).val().toLowerCase();
             $('div[data-role="plant_species"]').filter(function() {
-                if($(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)){
-                }  
+                if ($(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)) {}
             });
         });
     });
 
 </script>
-    
+
+<script>
+    var cw = $('.child').width();
+    $('.child').css({
+        'height': cw + 'px'
+    });
+
+</script>
+
 <body>
     <div class="landing-text-aboutus">
-    <h1>ONZE PLANTEN</h1>
+        <h1>ONZE PLANTEN</h1>
     </div>
     <div style="margin-left:15%; margin-right:15%; margin-top:5%; margin-bottom:5%;">
         <?php
@@ -60,7 +72,7 @@
                         $image_path = $row["image_path"];
                         $image = glob($image_path."plantpage_image/*.{jpg,png,JPG,PNG}", GLOB_BRACE);                                     
                         if(count($image>0)){
-                            echo '<img style="width: 100%; height: 250px;" src="'.$image[0].'">';
+                            echo '<img class="child" src="'.$image[0].'">';
                         }
                  
                        
@@ -87,7 +99,7 @@
 
     </div>
 
-<?php>
+    <?php>
   include 'footer.php';  
 ?>
 </body>
