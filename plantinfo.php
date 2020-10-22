@@ -68,9 +68,9 @@
 
                     for ($i = 0; $i < count($image_array); $i++) {
                     
-                        echo '<div class="mySlides fade">
+                        echo '<div style="text-align:center;" class="mySlides fade ">
                         <div class="numbertext">'. ($i+1) .' / '.count($image_array).'</div>
-                        <img src="'.$image_array[$i].'" style="height:350px; width:auto; object-fit: cover;">
+                        <img src="'.$image_array[$i].'" style="height:auto; width:80%;" object-fit: cover;">
                         </div>';
                     }
                   

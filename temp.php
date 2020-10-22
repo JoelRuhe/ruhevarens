@@ -1,14 +1,16 @@
 <html>
 
 <head>
-    
-</head>
+    <style>
+        .child {
+            width: 100%;
+        }
 
-<body>
-    <?php
-    
+    </style>
+</head>
+<?php
     include 'head.html';
-//    include 'header.php';
+    include 'header.php';
     
     $servername = "localhost";
     $username = "root";
@@ -21,185 +23,90 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    
-?>
+    ?>
+
 <script>
-$(document).ready(function() {
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#MyCards .card").filter(function() {
-      $(this).toggle($(this).find('h4').text().toLowerCase().indexOf(value) > -1)
+    $(document).ready(function() {
+        $("#searchbox").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $('div[data-role="plant_species"]').filter(function() {
+                if ($(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)) {}
+            });
+        });
     });
-  });
-});    
-</script>    
-     <div class="col-sm-10 col-sm-offset-1 col-md-11 col-md-offset-1 main">
-          <input type="text" id="myInput" value="" class="form-control form-control-lg form-control-borderles" placeholder="Filtering | Search Bar">
-  </div>
-<br>
-  <div class="py-5">
-    <div class="container" id="MyCards">
-      <div class="row hidden-md-up">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">TEST</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-      </div><br>
 
-      <div class="row hidden-md-up">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">TEST</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-      </div><br>
+</script>
 
-      <body>
-  <div class="py-5">
-    <div class="container">
-      <div class="row hidden-md-up">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-      </div><br>
+<script>
+    var cw = $('.child').width();
+    $('.child').css({
+        'height': cw + 'px'
+    });
 
-      <div class="row hidden-md-up">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">DIFF title</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
-            </div>
-          </div>
-        </div>
-      </div><br>
+</script>
 
-      </div>
+<body>
+    <div class="landing-text-aboutus">
+        <h1>ONZE PLANTEN</h1>
+    </div>
+    <div style="margin-left:15%; margin-right:15%; margin-top:5%; margin-bottom:5%;">
+        <form method="POST">
+            <input name="searchbox" id="searchbox" placeholder="Zoek plant..." list="encodings" type="text" class="filterinput form-control">
+            <input type="submit" "submitSearch">
+        </form>
+        
+        <?php
+        $i = 0; # start a loop counter at 1 
+            $sql = "SELECT * FROM plants GROUP BY plant_species, id ORDER BY plant_species";
+            if($result = mysqli_query($conn, $sql)){
+                if(mysqli_num_rows($result) > 0){
+                    
+                    echo '<div class="row">';
+                    while($row = mysqli_fetch_array($result)){
+            
+                    if ($i!=0 && $i%4==0) echo '</div><div class="row">';
+                    if ($row["active"] == 1){
+        ?>
+
+        <div style="margin-top:5%;" class="col-sm-3" d-flex justify-content-center data-role="plant_species">
+            <form method="POST" action="plantinfo.php">
+                <div class="card">
+                    <div class="card-body">
+                        <?php
+                        
+                        $image_path = $row["image_path"];
+                        $image = glob($image_path."plantpage_image/*.{jpg,png,JPG,PNG}", GLOB_BRACE);                                     
+                        if(count($image>0)){
+                            echo '<img class="child" src="'.$image[0].'">';
+                        }
+                 
+                       
+                        ?>
+                        <h5 style="margin-top:20px;" class="card-title"><?php echo $row["plant_species"]; ?></h5>
+                        <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text"><?php echo $row["description"]; ?></p>
+                        <h5 style="font-size:13px;">Potgrootte: <?php echo '<span font-size:13px;">' .$row['pot_size']. '</span>'; ?></h5>
+                        <h5 style="margin-bottom:10%;font-size:13px;">Prijs: €<?php echo $row['price']; ?>,-</h5>
+
+                        <button value="<?php echo $row["id"]; ?>" name="selectedplant" type="submit" class="btn btn-primary">Bekijk plant</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <?php
+                }
+            $i++;
+            }
+            echo '</div>';
+        }
+    }
+        ?>
+
     </div>
 
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-</body>
-
-      </div>
-    </div>
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+    <?php>
+  include 'footer.php';  
+?>
 </body>
 
 </html>
