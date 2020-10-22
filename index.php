@@ -22,7 +22,7 @@
                 <img src="img/Alocasia_Polly_Stek.jpg">
             </div>
             <div class="col-sm-6 text-center my-auto">
-                <h3>Het begint bij verspenen</h3>
+                <h3>Het begint bij het verspenen</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
             </div>

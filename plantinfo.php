@@ -57,8 +57,67 @@
             </div>
         </div>
         <div style="margin-top:100px;" class="row">
-            <div class="col-sm-6">
-                <?php echo '<img style="display:block; margin-left: auto; margin-right: auto; height:400px; width:400px;" src="'.$image_path.'">';?>
+            <div class="col-sm-6 d-flex justify-content-center">
+                <?php 
+                 $imagesPNG = glob($image_path."*.{png,PNG}", GLOB_BRACE);                       
+                 $imagesJPG = glob($image_path."*.{jpg,JPG}", GLOB_BRACE);
+                        
+                 $image_array = array_merge($imagesPNG,$imagesJPG);
+                        
+                    echo '<div>';
+
+                    for ($i = 0; $i < count($image_array); $i++) {
+                    
+                        echo '<div class="mySlides fade">
+                        <div class="numbertext">'. ($i+1) .' / '.count($image_array).'</div>
+                        <img src="'.$image_array[$i].'" style="height:350px; width:auto; object-fit: cover;">
+                        </div>';
+                    }
+                  
+                  echo '<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
+                <div style="margin-top:20px; text-align:center">';
+                        for ($i = 0; $i < count($image_array); $i++) {
+                
+                        echo '<span class="dot" onclick="currentSlide('.$i.')"></span>';
+                        }
+                        echo '</div>
+                </div>';
+                        
+                     
+                ?>
+                <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                // Next/previous controls
+                function plusSlides(n) {
+                  showSlides(slideIndex += n);
+                }
+
+                // Thumbnail image controls
+                function currentSlide(n) {
+                  showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                  var i;
+                  var slides = document.getElementsByClassName("mySlides");
+                  var dots = document.getElementsByClassName("dot");
+                  if (n > slides.length) {slideIndex = 1}
+                  if (n < 1) {slideIndex = slides.length}
+                  for (i = 0; i < slides.length; i++) {
+                      slides[i].style.display = "none";
+                  }
+                  for (i = 0; i < dots.length; i++) {
+                      dots[i].className = dots[i].className.replace(" active", "");
+                  }
+                  slides[slideIndex-1].style.display = "block";
+                  dots[slideIndex-1].className += " active";
+                }
+
+                </script>
             </div>
             <div class="col-sm-6">
                 <div style="margin-left:100px;">
@@ -66,7 +125,7 @@
                         echo '<h4>Omschrijving</h4>
                         <p style="margin-top:10px; font-size:18px;">'.$description.'</p>
                         <p style="margin-top:30px; font-size:18px;">Potgrootte: '.$pot_size.'</p>
-                        <p style="margin-top:10px; font-size:18px;">Prijs: €'.$price.'0,-</p>';
+                        <p style="margin-top:10px; font-size:18px;">Prijs: €'.$price.',-</p>';
                         ?>
                 </div>
             </div>

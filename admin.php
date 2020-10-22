@@ -21,24 +21,56 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-    
 
-////ADD IMAGE
-//    
-//if(isset($_GET["addImage"])){
-//    echo'HALLO';
-//    $id = $_GET["addImage"];
-//    $sql = "SELECT * FROM plants WHERE id='$id''";
-//    if($result = mysqli_query($conn, $sql)){
-//        if(mysqli_num_rows($result) > 0){
-//            $image_path = $row['image_path'];
-//        }
-//    }
-//}
+function is_dir_empty($dir) {
+    if (!is_readable($dir)) return NULL; 
+    return (count(scandir($dir)) == 2);
+}    
+    
+function deleteDir($dirPath) {
+    if (! is_dir($dirPath)) {
+        throw new InvalidArgumentException($dirPath."must be a directory");
+    }
+    if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+        $dirPath .= '/';
+    }
+    $files = glob($dirPath . '*', GLOB_MARK);
+    foreach ($files as $file) {
+        if (is_dir($file)) {
+            deleteDir($file);
+        } else {
+            unlink($file);
+        }
+    }
+    rmdir($dirPath);
+}
     
 //REMOVE PLANT
 if(isset($_GET["del_button"])) {
     $id = $_GET["del_button"];
+    
+    $sql = "SELECT * FROM plants WHERE id = '$id'";
+
+    if($result = mysqli_query($conn, $sql)){
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_array($result)){
+                $plant_species = $row['plant_species'];
+                $pot_size = $row['pot_size'];
+            
+                $plant_species = $row['plant_species'];
+                $pot_size = $row['pot_size'];
+                $dirpath = 'plant_images/'.$plant_species.'/'.$pot_size.'/';
+                $species_path = 'plant_images/'.$plant_species.'/';
+                if (file_exists($dirpath)) {
+                    deleteDir($dirpath);
+                    if(is_dir_empty($species_path)){
+                        deleteDir($species_path);
+                    }
+                }
+            }
+        }
+    }
+        
     $sql = "DELETE FROM plants WHERE id = '$id'";
     if ($conn->query($sql) === TRUE) {
 //        echo "Record removed successfully";
@@ -47,105 +79,118 @@ if(isset($_GET["del_button"])) {
     }
     echo "<script>window.location='admin.php#myTable'</script>";
 }
+
     
 
 
 
 
 ?>
+
 <body>
 
 
-<div>
-    <div class="landing-text-aboutus">
-        <h1>Voeg plant toe</h1>
+    <div>
+        <div class="landing-text-aboutus">
+            <h1>Voeg plant toe</h1>
+        </div>
     </div>
-</div>
-    
-<div class="padding">
-    <div class="container justify-content-center">
-        <form action="upload.php" method="post" class="form-horizontal" enctype="multipart/form-data">
-            <div class="form-group">
-              <label class="control-label col-sm-2">Plantsoort:*</label>
-              <div class="col-sm-10">
-                <input type="name" class="form-control" id="plant_species"  name="plant_species" required="required">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-2">Potgrootte:*</label>
-              <div class="col-sm-10">          
-                <input type="number" class="form-control" id="pot_size" name="pot_size" required="required">
-              </div>
-            </div>
-           <div  class="form-group">
-              <label  class="control-label col-sm-2">Omschrijving:</label>
-              <div class="col-sm-10">          
-                  <textarea rows = "5" cols = "60" type="name" class="form-control" id="description" name="description"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label  class="control-label col-sm-2">Prijs:*</label>
-              <div class="col-sm-10">          
-                <input type="name" class="form-control" id="price" name="price" required="required">
-              </div>
-            </div>
-             <div class="form-group">
-              <label  class="control-label col-sm-2">Actief*</label>
-              <div class="col-sm-10">          
-                <input type="checkbox" class="form-control" id="checkbox" name="checkbox">
-              </div>
-            </div>
-             <div class="form-group">
-              <label class="control-label col-sm-2">Afbeelding:</label>
-              <div class="col-sm-10">          
-                <input type="file" name="fileToUpload" class="form-control-file" id="fileToUpload">            
+
+    <div class="padding">
+        <div class="container justify-content-center">
+            <form action="upload.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Plantsoort:*</label>
+                    <div class="col-sm-10">
+                        <input type="name" class="form-control" id="plant_species" name="plant_species" required="required">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">        
-              <div class="col-sm-offset-2 col-sm-10">
-                <input style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" value="Voeg plant toe">
-              </div>
-            </div>
-          </form> 
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Potgrootte:*</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="pot_size" name="pot_size" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Omschrijving:</label>
+                    <div class="col-sm-10">
+                        <textarea rows="5" cols="60" type="name" class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Prijs:*</label>
+                    <div class="col-sm-10">
+                        <input type="name" class="form-control" id="price" name="price" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Actief:</label>
+                    <div class="col-sm-10">
+                        <input type="checkbox" class="form-control" id="checkbox" name="checkbox">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Afbeelding:</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="fileToUpload[]" class="form-control-file" id="fileToUpload" multiple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Afbeelding voor plantenpagina:</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="plantpage_image" class="form-control-file" id="plantpage_image">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input style="margin-top:10px; font-weight: bold;" type="submit" class="btn btn-default" value="Voeg plant toe">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
 
 
-<div>
-    <div class="landing-text-admin">
-        <h1>Verwijder of bewerk plant</h1>
+    <div>
+        <div class="landing-text-admin">
+            <h1>Verwijder of bewerk plant</h1>
+        </div>
     </div>
-</div>
 
     <script>
-function myFunction() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
-    
-<div class="padding">
-    <div class="container justify-content-center"> 
-        <?php
-        $sql = "SELECT * FROM plants";
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function RemoveImage() {
+
+        }
+
+    </script>
+
+    <div class="padding">
+        <div class="container justify-content-center">
+            <?php
+        $sql = "SELECT * FROM plants ORDER BY plant_species";
             if($result = mysqli_query($conn, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     echo '<input style="margin-bottom:20px;" class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Zoek plant...">';
@@ -187,13 +232,13 @@ function myFunction() {
             }
     ?>
 
+        </div>
     </div>
-</div>
-    
-<div class="padding">
-    <div class="container justify-content-center">
-        <form action="uploadEdit.php" method="post" class="form-horizontal" enctype="multipart/form-data">
-<?php            
+
+    <div class="padding">
+        <div class="container justify-content-center">
+            <form action="uploadEdit.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <?php            
     if(isset($_GET["edit_button"])) {
         $id = $_GET["edit_button"];
         $sql = "SELECT * FROM plants WHERE id = '$id'";
@@ -265,7 +310,18 @@ function myFunction() {
      <div class="form-group">
       <label class="control-label col-sm-2">Afbeelding:</label>
       <div class="col-sm-10">          
-        <input type="file" name="fileToUpload_edit" class="form-control-file" value="'.$image_edit.'" id="fileToUpload_edit">            
+        <input type="file" name="fileToUpload_edit[]" class="form-control-file" id="fileToUpload_edit" multiple>            
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Afbeelding voor plantenpagina:</label>
+      <div class="col-sm-10">          
+        <input type="file" name="plantpage_image_edit" class="form-control-file" id="plantpage_image_edit" >            
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Afbeelding verwijderen:</label>
+      <div class="col-sm-10">          
         </div>
     </div>
     <div class="form-group">        
@@ -276,23 +332,17 @@ function myFunction() {
 
 
     ?>
-          </form> 
+            </form>
+        </div>
     </div>
-</div>
 
 
-<?php 
+    <?php 
 include 'footer.php';
 //$conn->close();
 
 }
 ?>
-    
-  
+
+
 </body>
-
-
-
-
-
-    
