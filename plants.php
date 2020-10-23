@@ -39,6 +39,7 @@
     <div class="landing-text-aboutus">
         <h1>ONZE PLANTEN</h1>
     </div>
+    <div style="margin-bottom:5%;">
     <div class="text-center" style="margin-left:15%; margin-right:15%; margin-top:5%;">
         <div class="row text-center">
             <div class="col-md-12">
@@ -66,11 +67,11 @@
                              <div class="row">';
                     while($row = mysqli_fetch_array($result)){
             
-                    if ($i!=0 && $i%4==0) echo '</div><div class="row">';
+                    if ($i!=0 && $i%6==0) echo '</div><div class="row">';
                     if ($row["active"] == 1){
         ?>
 
-        <div style="margin-top:5%;" class="col-sm-3" d-flex justify-content-center data-role="plant_species">
+        <div style="margin-top:5%;" class="col-sm-2" data-role="plant_species">
             <form method="POST" action="plantinfo.php">
                 <div class="card">
                     <div class="card-body">
@@ -84,10 +85,22 @@
                  
                        
                         ?>
+
                         <h5 style="margin-top:20px;" class="card-title"><?php echo $row["plant_species"]; ?></h5>
-                        <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text"><?php echo $row["description"]; ?></p>
-                        <h5 style="font-size:13px;">Potgrootte: <?php echo '<span font-size:13px;">' .$row['pot_size']. '</span>'; ?></h5>
-                        <h5 style="margin-bottom:10%;font-size:13px;">Prijs: €<?php echo $row['price']; ?>,-</h5>
+
+<!--                        <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text"><?php //echo $row["description"]; ?></p>-->
+                        <div class="row justify-content-center">
+                            <img style="width:15px; height:15px; margin-right:5px;" src="img/pagelines-brands.svg">
+                            <h5 style="font-size:13px;">Potgrootte: <?php echo '<span font-size:13px;">' .$row['pot_size']. ' cm</span>'; ?></h5>
+                        </div>
+                        <div class="row justify-content-center">
+                            <img style="width:14px; height:14px; margin-right:5px;" src="img/big-ruler.svg">
+                            <h5 style="font-size:13px;">Lengte: <?php echo '<span font-size:13px;">' .$row['length']. ' cm</span>'; ?></h5>
+                        </div>
+                        <div class="row justify-content-center">
+                            <img style="width:11px; height:11px; margin-right:5px; margin-top:2px;" src="img/euro.svg">
+                            <h5 style="margin-bottom:10%;font-size:13px;">Prijs: €<?php echo $row['price']; ?>,-</h5>
+                        </div>
 
                         <button value="<?php echo $row["id"]; ?>" name="selectedplant" type="submit" class="btn btn-primary">Bekijk plant</button>
                     </div>
@@ -114,7 +127,7 @@
     <?php 
          if(isset($_POST["submitSearch"])){
              ?>
-    <div id="searchDiv" style="margin-left:15%; margin-right:15%; margin-bottom:5%;">
+    <div id="searchDiv" style="margin-left:15%; margin-right:15%;">
         <?php
             $search_input = $_POST["searchbox"];    
              
@@ -131,11 +144,11 @@
                     echo '<div class="row">';
                     while($row = mysqli_fetch_array($result)){
             
-                    if ($i!=0 && $i%4==0) echo '</div><div class="row">';
+                    if ($i!=0 && $i%6==0) echo '</div><div class="row">';
                     if ($row["active"] == 1){
         ?>
 
-        <div style="margin-top:5%;" class="col-sm-3" d-flex justify-content-center data-role="plant_species">
+       <div style="margin-top:5%;" class="col-sm-2" data-role="plant_species">
             <form method="POST" action="plantinfo.php">
                 <div class="card">
                     <div class="card-body">
@@ -149,10 +162,22 @@
                  
                        
                         ?>
-                        <h5 style="margin-top:20px;" class="card-title"><?php echo $row["plant_species"]; ?></h5>
-                        <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text"><?php echo $row["description"]; ?></p>
-                        <h5 style="font-size:13px;">Potgrootte: <?php echo '<span font-size:13px;">' .$row['pot_size']. '</span>'; ?></h5>
-                        <h5 style="margin-bottom:10%;font-size:13px;">Prijs: €<?php echo $row['price']; ?>,-</h5>
+
+                        <h5 style="margin-top:20px;" class="card-title text-center"><?php echo $row["plant_species"]; ?></h5>
+
+<!--                        <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="card-text text-center"><?php //echo $row["description"]; ?></p>-->
+                        <div class="row justify-content-center">
+                            <img style="width:15px; height:15px; margin-right:5px;" src="img/pagelines-brands.svg">
+                            <h5 style="font-size:13px;">Potgrootte: <?php echo '<span font-size:13px;">' .$row['pot_size']. '</span> cm'; ?></h5>
+                        </div>
+                        <div class="row justify-content-center">
+                            <img style="width:14px; height:14px; margin-right:5px;" src="img/big-ruler.svg">
+                            <h5 style="font-size:13px;">Lengte: <?php echo '<span font-size:13px;">' .$row['length']. ' cm</span>'; ?></h5>
+                        </div>
+                        <div class="row justify-content-center">
+                            <img style="width:11px; height:11px; margin-right:5px; margin-top:2px;" src="img/euro.svg">
+                            <h5 style="margin-bottom:10%;font-size:13px;">Prijs: €<?php echo $row['price']; ?>,-</h5>
+                        </div>
 
                         <button value="<?php echo $row["id"]; ?>" name="selectedplant" type="submit" class="btn btn-primary">Bekijk plant</button>
                     </div>
@@ -183,10 +208,10 @@
     
     ?>
     </div>
+    </div>
     <?php
   include 'footer.php';  
 ?>
 </body>
 
 </html>
-

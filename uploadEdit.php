@@ -76,9 +76,9 @@ function recurse_copy($src,$dst) {
 $id_edit = $_POST['id_edit'];
 $plant_species_edit = $_POST['plant_species_edit'];
 $pot_size_edit = $_POST['pot_size_edit'];
+$length_edit = $_POST['length_edit'];
 $description_edit = $_POST['description_edit'];
 $price_edit = $_POST['price_edit'];
-//$image_edit = $_POST['image_edit'];
     
 $old_plant_species_edit = $_POST['old_plant_species_edit'];
 $old_pot_size_edit = $_POST['old_pot_size_edit'];
@@ -88,8 +88,7 @@ $old_target_species ="plant_images/".$old_plant_species_edit."/";
 
 $target_dir = "plant_images/".$plant_species_edit."/".$pot_size_edit."/";
 $plantpage_dir = "plant_images/".$plant_species_edit."/".$pot_size_edit."/plantpage_image/";
-//$target_file = $target_dir . basename($_FILES["fileToUpload_edit"]["name"]);
-//echo $target_file;
+
 
 if ($plant_species_edit != $old_plant_species_edit || $pot_size_edit != $old_pot_size_edit){
     
@@ -152,52 +151,6 @@ if ($_FILES['plantpage_image_edit']['size'] != 0){
 }
 
 
-//if (file_exists($target_file)) {
-//    unlink($target_file);
-//}
-//if (!file_exists($target_dir)) {
-//    mkdir($target_dir, 0777, true);
-//}
-//
-//// Check file size
-//if ($_FILES["fileToUpload_edit"]["size"] > 500000) {
-//  echo "Sorry, your file is too large.";
-//  $uploadOk = 0;
-//}
-//
-//// Check if $uploadOk is set to 0 by an error
-//if ($uploadOk == 0) {
-//  echo "Sorry, your file was not uploaded.";
-//// if everything is ok, try to upload file
-//} else {
-//  if (move_uploaded_file($_FILES["fileToUpload_edit"]["tmp_name"], $target_file || ($_FILES["fileToUpload_edit"]["size"] == 0 && $_FILES['fileToUpload_edit']['error'] == 0))) {
-//    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload_edit"]["name"])). " has been uploaded to ".$target_file.".";
-//       echo 'OLD_DIR:' . $old_target_dir;
-//      
-//      recurse_copy($old_target_dir,$target_dir);
-//          
-//     
-////      array_map('unlink', glob("$old_target_dir/*.*"));
-////      rmdir($old_target_dir);
-//  }
-////    if($_FILES["fileToUpload_edit"]["tmp_name"] == 0){
-////        $results = glob ($old_target_dir."*.jpg");
-////        echo '<br>';
-////        foreach ($results as &$value) {
-////            echo 'Value:'. $value . '<br>';
-////            echo 'target_dir:'. $target_dir . '<br>';
-////
-////            copy($value, $target_file);
-////        }
-////    }
-//    else {
-//    echo "Sorry, there was an error uploading the image.";
-//  }
-//}
-
-
-
-
     
 if (!isset($_POST["checkbox_edit"])) {
    $sql = "UPDATE plants SET ";
@@ -210,6 +163,9 @@ if (!isset($_POST["checkbox_edit"])) {
     }
     if(!empty($pot_size_edit)) {
         $sql .= "pot_size= '$pot_size_edit',";
+    } 
+    if(!empty($length_edit)) {
+        $sql .= "length= '$length_edit',";
     }
     if(!empty($description_edit)) {
         $sql .= "description= '$description_edit',";
@@ -248,6 +204,9 @@ if (isset($_POST["checkbox_edit"])) {
     }
     if(!empty($pot_size_edit)) {
         $sql .= "pot_size= '$pot_size_edit',";
+    }
+    if(!empty($length_edit)) {
+        $sql .= "length= '$length_edit',";
     }
     if(!empty($description_edit)) {
         $sql .= "description= '$description_edit',";

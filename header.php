@@ -6,13 +6,21 @@
     <div style="margin-left:3%;" class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="form-inline my-2 my-lg-0">
             <ul style="margin-right:50px;" class="navbar-nav">
-                <li style="margin-right:50px;"><a style="color:white;" href="index.php">Home</a></li>
-                <li style="margin-right:50px;"><a style="color:white;" href="about_us.php">Over ons</a>
-                <li style="margin-right:50px;"><a style="color:white;" href="ferninfo.php">Varens</a></li>
-                <li style="margin-right:50px;"><a style="color:white;" href="plants.php">Onze planten</a></li>
-                
-                <li><a style="color:white;" href="contact.php">Contact</a></li>
-                <!--                <li><a href="login.php">Log in</a></li>-->
+                <li style="margin-right:50px;"><a style="color:white;" href="index.php"><b>Home</b></a></li>
+                <li style="margin-right:50px;"><a style="color:white;" href="about_us.php"><b>Over ons</b></a>
+                <li style="margin-right:50px;"><a style="color:white;" href="ferninfo.php"><b>Varens</b></a></li>
+                <li style="margin-right:50px;"><a style="color:white;" href="plants.php"><b>Onze planten</b></a></li>
+
+                <li><a style="color:white;" href="contact.php"><b>Contact</b></a></li>
+            </ul>
+        </div>
+    </div>
+     <div style="margin-right:3%; margin-top:15px;" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="form-inline my-2 my-lg-0 ml-auto">
+            <ul>
+                <a href="#" class="fa fa-facebook-square"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
             </ul>
         </div>
     </div>

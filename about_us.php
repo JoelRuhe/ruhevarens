@@ -7,7 +7,6 @@
     <div id="aboutus">
         <div class="landing-text-aboutus">
             <h1>OVER ONS</h1>
-
             <div style="margin-top:3%;" class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4">
@@ -92,35 +91,10 @@
             </div>
         </div>
     </div>
-
-
-    <!--
-    <div class="padding">
-        <div class="container-fluid text-center">
-            <div class="row">
-                <div class="col-sm-4">
-                    <img style="width: 200; height: 200px;" class="imgperson" src="img/test.jpg" alt="Avatar">
-
-                    Willem
-                </div>
-                <div class="col-sm-4">
-                    <img style="width: 200px; height: 200px;" class="imgperson" src="img/person-icon.png" alt="Avatar">
-
-                    <p>John</p>
-                </div>
-                <div class="col-sm-4">
-                    <img style="width: 200px; height: 200px;" class="imgperson" src="img/person-icon.png" alt="Avatar">
-
-                    Herman
-                </div>
-            </div>
-        </div>
-    </div>
--->
-
-
-
-    <?php include "footer.php"?>
+    
+<?php 
+    include "footer.php"
+?>
 </body>
 
 </html>

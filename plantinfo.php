@@ -26,6 +26,7 @@
             while($row = mysqli_fetch_array($result)){
                 $plant_species = $row['plant_species'];
                 $pot_size = $row['pot_size'];
+                $length = $row['length'];
                 $description = $row['description'];
                 $price = $row['price'];
                 $image_path = $row['image_path'];
@@ -80,7 +81,7 @@
                 <div style="margin-top:20px; text-align:center">';
                         for ($i = 0; $i < count($image_array); $i++) {
                 
-                        echo '<span class="dot" onclick="currentSlide('.$i.')"></span>';
+                        echo '<span class="dot" onclick="currentSlide('.($i+1).')"></span>';
                         }
                         echo '</div>
                 </div>';
@@ -88,45 +89,59 @@
                      
                 ?>
                 <script>
-                var slideIndex = 1;
-                showSlides(slideIndex);
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
 
-                // Next/previous controls
-                function plusSlides(n) {
-                  showSlides(slideIndex += n);
-                }
+                    // Next/previous controls
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
 
-                // Thumbnail image controls
-                function currentSlide(n) {
-                  showSlides(slideIndex = n);
-                }
+                    // Thumbnail image controls
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
 
-                function showSlides(n) {
-                  var i;
-                  var slides = document.getElementsByClassName("mySlides");
-                  var dots = document.getElementsByClassName("dot");
-                  if (n > slides.length) {slideIndex = 1}
-                  if (n < 1) {slideIndex = slides.length}
-                  for (i = 0; i < slides.length; i++) {
-                      slides[i].style.display = "none";
-                  }
-                  for (i = 0; i < dots.length; i++) {
-                      dots[i].className = dots[i].className.replace(" active", "");
-                  }
-                  slides[slideIndex-1].style.display = "block";
-                  dots[slideIndex-1].className += " active";
-                }
+                    function showSlides(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("dot");
+                        if (n > slides.length) {
+                            slideIndex = 1
+                        }
+                        if (n < 1) {
+                            slideIndex = slides.length
+                        }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        dots[slideIndex - 1].className += " active";
+                    }
 
                 </script>
             </div>
             <div class="col-sm-6">
                 <div style="margin-left:100px;">
-                    <?php
-                        echo '<h4>Omschrijving</h4>
-                        <p style="margin-top:10px; font-size:18px;">'.$description.'</p>
-                        <p style="margin-top:30px; font-size:18px;">Potgrootte: '.$pot_size.'</p>
-                        <p style="margin-top:10px; font-size:18px;">Prijs: €'.$price.',-</p>';
-                        ?>
+
+                    <h4>Omschrijving</h4>
+
+                    <p style="margin-top:10px; font-size:18px;"><?php echo $description;?></p>
+                    <div style="display: flex; align-items: center;" class="row">
+                        <img style="width:25px; height:25px; margin-right:5px; margin-top:10px;" src="img/pagelines-brands.svg">
+                        <p style="margin-top:30px; font-size:18px;">Potgrootte: <?php echo $pot_size;?> cm</p>
+                    </div>
+                    <div style="display: flex; align-items: center;" class="row">
+                        <img style="width:25px; height:25px; margin-right:5px;" src="img/big-ruler.svg">
+                        <p style="margin-top:15px; font-size:18px;">Lengte: <?php echo $length;?> cm</p>
+                    </div>
+                    <div style="display: flex; align-items: center;" class="row">
+                        <img style="width:20px; height:20px; margin-right:5px; margin-left:5px;" src="img/euro.svg">
+                        <p style="margin-top:15px;font-size:18px;">Prijs: €<?php echo $price;?>,-</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +150,7 @@
     <?php
     include 'footer.php';
     ?>
-    
+
 </body>
 
 </html>
