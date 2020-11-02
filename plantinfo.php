@@ -1,20 +1,10 @@
 <html>
 <?php
     
-    include 'head.html';
-    include 'header.php';
+    include 'includes/head.html';
+    include 'includes/header.php';
+    include 'includes/database.php';
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "ruhevarens";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
 
 
     $id = $_POST['selectedplant'];
@@ -33,16 +23,6 @@
             }
         }
     }
-    
-//    $potgrootte_sql = "SELECT plant_species, GROUP_CONCAT(pot_size) FROM plants WHERE plant_species = '$plant_species'";
-//    
-//    if($result2 = mysqli_query($conn, $potgrootte_sql)){
-//        if(mysqli_num_rows($result2) > 0){
-//            while($row2 = mysqli_fetch_array($result2)){
-//                $pot_size = $row2['GROUP_CONCAT(pot_size)'];
-//            }
-//        }
-//    }
 
 ?>
 
@@ -58,7 +38,7 @@
             </div>
         </div>
         <div style="margin-top:100px;" class="row">
-            <div class="col-sm-6 d-flex justify-content-center">
+            <div class="col-md-6 d-flex justify-content-center">
                 <?php 
                  $imagesPNG = glob($image_path."*.{png,PNG}", GLOB_BRACE);                       
                  $imagesJPG = glob($image_path."*.{jpg,JPG}", GLOB_BRACE);
@@ -124,7 +104,7 @@
 
                 </script>
             </div>
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <div style="margin-left:100px;">
 
                     <h4>Omschrijving</h4>
@@ -138,10 +118,12 @@
                         <img style="width:25px; height:25px; margin-right:5px;" src="img/big-ruler.svg">
                         <p style="margin-top:15px; font-size:18px;">Lengte: <?php echo $length;?> cm</p>
                     </div>
+<!--
                     <div style="display: flex; align-items: center;" class="row">
                         <img style="width:20px; height:20px; margin-right:5px; margin-left:5px;" src="img/euro.svg">
-                        <p style="margin-top:15px;font-size:18px;">Prijs: €<?php echo $price;?>,-</p>
+                        <p style="margin-top:15px;font-size:18px;">Prijs: €<?php //echo $price;?>,-</p>
                     </div>
+-->
                 </div>
             </div>
         </div>

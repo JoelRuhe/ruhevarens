@@ -1,26 +1,13 @@
 <?php 
 session_start();
 
-
-
 if(!isset($_SESSION['id'])) {
  echo 'No active session';   
 }
 else{
-include "head.html";
-include "header.php"; 
-
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "ruhevarens";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include "includes/head.html";
+include "includes/header.php"; 
+include 'includes/database.php';
 
 // Check if directory is empty
 function is_dir_empty($dir) {

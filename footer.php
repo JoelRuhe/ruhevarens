@@ -35,7 +35,7 @@
         </div>
         <div class="col-sm-4">
             <h3>Social</h3>
-            <a style="height:100px; width:100px;" href="#" class="fa fa-facebook-square"></a>
+            <a href="#" class="fa fa-facebook-square"></a>
             <a href="#" class="fa fa-twitter"></a>
             <a href="#" class="fa fa-instagram"></a>
         </div>

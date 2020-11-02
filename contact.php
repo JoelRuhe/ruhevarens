@@ -1,21 +1,9 @@
 <html>
-<?php include "head.html"?>
+<?php include "includes/head.html"?>
 
 <body>
     <?php 
-        include "header.php";
-    
-        if(isset($_POST["email_submit"])){
-            $name = $_POST['name_input'];
-            $email_from = $_POST['email_input'];
-            $email_subject = "Contact formulier ingevuld van '$name'";
-            $email_body = $_POST['message_input'];
-
-            $email_to = "ruhejoel@gmail.com";
-            $headers = "From: $email_from \r\n";
-
-            mail($email_to,$email_subject,$email_body,$headers);
-        }
+        include "includes/header.php";
     ?>
 
     <div id="aboutus">
@@ -23,6 +11,43 @@
             <h1>CONTACT</h1>
         </div>
     </div>
+    
+    <div style="maring-top:5%;">
+        <?php
+        if(isset($_POST["email_submit"])){
+            $name = $_POST['name_input'];
+            $email_from = $_POST['email_input'];
+            $email_subject = "Contact formulier ingevuld van '$name'";
+            $email_body = $_POST['message_input'];
+
+            $email_to = "info@ruheplant.nl";
+            $headers = "From: $email_from \r\n";
+            
+            $email_subject_response = 'Automatisch Antwoord Contactformulier.';
+            $email_body_response = 'Uw mailtje is binnen gekomen bij '.$email_to.'. Wij proberen zo spoedig mogelijk te reageren!';
+            $headers_response = 'From : info@ruheplants.nl';
+            
+            if(mail($email_to,$email_subject,$email_body,$headers)){
+               
+                echo '
+                <div style="margin-top:50px;text-align:center;" class="row justify-content-center">
+                <h3 style="margin-top:15px;">Uw bericht is verzonden! Wij beantwoorden deze zo spoeding mogelijk. </h3>
+                <img style="margin-left:20px;width:50px; height:50px; margin-right:5px; margin-top:10px;" src="img/mail-send.svg">
+                </div>
+                ';
+                
+            }
+            else{
+                echo '
+                <div style="margin-top:50px;text-align:center;" class="row justify-content-center">
+                <h3 style="margin-top:15px;">Oeps.. Er is iets misgegaan. Probeer het later opnieuw. 😕</h3>
+                </div>
+                ';
+            }
+        }
+        ?>
+    </div>
+    
     <div class="padding">
         <div class="container">
             <div class="row">

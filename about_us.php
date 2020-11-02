@@ -1,8 +1,8 @@
 <html>
-<?php include "head.html"?>
+<?php include "includes/head.html"?>
 
 <body>
-    <?php include "header.php"?>
+    <?php include "includes/header.php"?>
 
     <div id="aboutus">
         <div class="landing-text-aboutus">
@@ -30,7 +30,7 @@
                 <div class="col-sm-6">
                     <img src="img/Alocasia_Polly_Stek.jpg">
                 </div>
-                <div class="col-sm-6 text-center my-auto">
+                <div class="col-sm-6 my-auto">
                     <h3>De Kwekerij</h3>
                     <p class="lead">Ruhé Varens is een kwekerij gevestigd in de buurt van de bloemenveiling Flora Holland in Aalsmeer. Er zijn twee locaties met een totale oppervlakte van ongeveer 4,4 hectare met voornamelijk varen-teelt. Het merendeel van de productie wordt door ons zelf gezaaid, verspeend en gepot of te wel “groot gebracht”.</p>
                     <p class="lead">Als de plantjes groot en sterk genoeg zijn dan worden ze verkocht aan de groothandels, exporteurs, bloemenwinkels, tuincentra enz. Waarna ze verder reizen door Nederland, Europa en zelfs over de hele wereld. </p>
@@ -42,7 +42,7 @@
     <div class="padding">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 text-center">
+                <div class="col-sm-6 text-right">
                     <h3>Ruhé Varens, een familiebedrijf</h3>
                     <p style="font-size:18px;" class="lead">Oké, een klein stukje geschiedenis….
                         Opa Ruhé (Jan) is aan het begin van de vorige eeuw gestart als warmoezenier (groentekweker) in de Sloterpolder, vlakbij Amsterdam. Na de oorlogsjaren is het gezin Ruhé verhuisd van de Sloterpolder naar Nieuwer-Amstel (huidige Amstelveen). Hier heeft hij de groentekwekerij voortgezet.
@@ -67,7 +67,7 @@
                     <img src="img/Alocasia_Polly_Stek.jpg">
                     <img style="width:60%; height:auto; margin-top:20%;" src="img/mps_image.jpg">
                 </div>
-                <div class="col-sm-6 text-center">
+                <div class="col-sm-6">
                     <h3>Duurzaamheid en Milieu</h3>
                     <p style="font-size:18px;" class="lead">Het milieu en de duurzaamheid van producten wordt voor de consument steeds belangrijker. Waar er vroeger niet gekeken werd naar het gebruik van bestrijdingsmiddelen, is dit nu juist heel belangrijk. Ruhé Varens is bewust bezig met het verduurzamen en milieuvriendelijk telen van de planten.
                     </p>

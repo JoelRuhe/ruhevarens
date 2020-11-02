@@ -1,7 +1,7 @@
 <html>
 <?php 
-    include 'head.html';
-    include 'header.php';
+    include 'includes/head.html';
+    include 'includes/header.php';
 ?>
 
 <body>
@@ -13,7 +13,7 @@
     <div class="padding">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 text-center my-auto">
+                <div class="col-sm-6 text-right my-auto">
                     <h3>Hmm, Frisse Lucht..</h3>
                     <p class="lead">Varens zijn bekend om hun luchtzuiverende werking. Het is wetenschappelijk aangetoond dat ze de lucht gezonder maken, schadelijke gassen neutraliseren en de luchtvochtigheid verbeteren.</p>
 
@@ -35,14 +35,13 @@
 
                 </div>
                 <div class="col-sm-6">
-                    <div class="text-center">
-                        <h3>De Varenfamilie</h3>
-                        <p class="lead">De varen is een oeroude plantsoort. Sommige soorten zijn uitgestorven en alleen bekend als fossiel. Momenteel zijn er in het wild zo’n 12.000 soorten bekend en in de horticultuur ‘slechts’ 150.
-                        <p class="lead">Als je de stamboom van de varen, oftewel “Pteridophyta”, bekijkt dan wordt er onderscheid gemaakt tussen de ‘varenachtigen’ (Lycopodiatae * Equisetatae * Psilotatae) en de ‘echte varens’ (Filicatae).
-                        </p>
-                        <p class="lead">Kenmerkend van de varens is dat zij geen bloemen of zaden maken om zich voort te planten. Varens maken sporen. Deze zijn te vinden bij de oudere planten onderop het blad. Uit deze sporen kunnen nieuwe varens ontstaan, maar alleen als de omstandigheden ideaal zijn.
-                        </p>
-                    </div>
+
+                    <h3>De Varenfamilie</h3>
+                    <p class="lead">De varen is een oeroude plantsoort. Sommige soorten zijn uitgestorven en alleen bekend als fossiel. Momenteel zijn er in het wild zo’n 12.000 soorten bekend en in de horticultuur ‘slechts’ 150.
+                    <p class="lead">Als je de stamboom van de varen, oftewel “Pteridophyta”, bekijkt dan wordt er onderscheid gemaakt tussen de ‘varenachtigen’ (Lycopodiatae * Equisetatae * Psilotatae) en de ‘echte varens’ (Filicatae).
+                    </p>
+                    <p class="lead">Kenmerkend van de varens is dat zij geen bloemen of zaden maken om zich voort te planten. Varens maken sporen. Deze zijn te vinden bij de oudere planten onderop het blad. Uit deze sporen kunnen nieuwe varens ontstaan, maar alleen als de omstandigheden ideaal zijn.
+                    </p>
                     <br>
                     <!--
                     <h6>De soorten die worden verstaan bij de ‘echte varens’ zijn:</h6>
@@ -117,8 +116,9 @@
             </div>
         </div>
     </div>
-<?php
+    <?php
   include 'footer.php';  
 ?>
 </body>
+
 </html>

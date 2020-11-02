@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<?php include "head.html" ?>
+    <?php include "includes/head.html" ?>
     
 <body>
-    <?php include "header.php" ?>
+    <?php include "includes/header.php" ?>
 
 
-<div id="home">
+<div style="background: url(img/mountains.jpeg) no-repeat center center fixed; display: table; height: 100%; position: relative; width: 100%; background-size: cover;" id="home">
     <div class="landing-text">
         <h4>Welkom bij</h4>
         <h1>RUHE PLANTS</h1>
@@ -21,7 +21,7 @@
             <div class="col-sm-6">
                 <img src="img/Alocasia_Polly_Stek.jpg">
             </div>
-            <div class="col-sm-6 text-center my-auto">
+            <div class="col-sm-6 my-auto">
                 <h3>Het begint bij het verspenen</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
@@ -33,7 +33,7 @@
 <div class="padding">
      <div class="container">
         <div class="row">
-            <div class="col-sm-6 text-center my-auto">
+            <div class="col-sm-6 text-right my-auto">
                 <h3>Vervolgens groeien ze op...</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nunc ac metus pretium dapibus. Vestibulum quis eleifend nibh. Morbi elementum nibh a augue laoreet, id dignissim risus commodo. </p>
@@ -45,39 +45,7 @@
     </div>
 </div>
 
-
-    
-<!--
-<script>
-    
-    var slideshows = document.querySelectorAll('[data-component="slideshow"]');
-  
-  // Apply to all slideshows that you define with the markup wrote
-  slideshows.forEach(initSlideShow);
-
-  function initSlideShow(slideshow) {
-
-    var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Get an array of slides
-
-    var index = 0, time = 2000;
-    slides[index].classList.add('active');  
-    
-    setInterval( () => {
-      slides[index].classList.remove('active');
-      
-      //Go over each slide incrementing the index
-      index++;
-      
-      // If you go over all slides, restart the index to show the first slide and start again
-      if (index === slides.length) index = 0; 
-      
-      slides[index].classList.add('active');
-
-    }, time);
-  }</script>
--->
-
-<div id="fixed">
+<div style=" background: url(img/background.jpg) no-repeat center center fixed; display: table; height: 60%; position: relative; width: 100%; background-size: cover;">
     
 </div>
     
@@ -159,6 +127,7 @@ function showSlides(n) {
 
 </script>
 
+<!--
 <div class="padding">
     <div class="container">
         <div class="row">
@@ -173,6 +142,7 @@ function showSlides(n) {
         </div>
     </div>
 </div>
+-->
 
 
 

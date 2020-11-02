@@ -7,17 +7,7 @@ if(!isset($_SESSION['id'])) {
  echo 'No active session';   
 }else{
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "ruhevarens";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include 'includes/database.php';
 
 
 function is_dir_empty($dir) {
@@ -91,16 +81,6 @@ $plantpage_dir = "plant_images/".$plant_species_edit."/".$pot_size_edit."/plantp
 
 
 if ($plant_species_edit != $old_plant_species_edit || $pot_size_edit != $old_pot_size_edit){
-    
-    //First copy old directory and remove it, then append new selected images.
-//    echo 'OLD_TARGET_DIR: '.$old_target_dir.'<br>';
-//    echo 'NEW_TARGET_DIR: '.$target_dir.'<br><br>';
-//    
-//    echo 'OLD PLANT SPECIES: '.$old_plant_species_edit.'<br>';
-//    echo 'NEW PLANT SPECIES: '.$plant_species_edit.'<br><br>';
-//    
-//    echo 'OLD POT SIZE: '.$old_pot_size_edit.'<br>';
-//    echo 'NEW POT SIZE: '.$pot_size_edit.'<br><br>';
     
     if(!file_exists($target_dir)){
         mkdir($target_dir, 0777, true);

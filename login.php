@@ -1,13 +1,14 @@
 <html>
-<?php include 'head.html'?>
+<?php 
+    include 'includes/head.html';
+    ?>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="login.css" type="text/css" rel="stylesheet">
+<link href="css/login.css" type="text/css" rel="stylesheet">
 <body>
-<?php include 'header.php'?>
-    
-    
-
-    
+<?php 
+    include 'includes/header.php';
+    include 'includes/database.php';
+?>
     
     
 <div class="wrapper fadeInDown">
@@ -24,18 +25,6 @@
 </div>
     
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "ruhevarens";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         // username and password sent from form 

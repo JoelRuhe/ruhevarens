@@ -4,17 +4,8 @@ session_start();
 if(!isset($_SESSION['id'])) {
  echo 'No active session';   
 }else{
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "ruhevarens";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+    include 'includes/database.php';
 
     $plant_species = $_POST['plant_species'];
     $pot_size = $_POST['pot_size'];
